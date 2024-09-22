@@ -13,6 +13,8 @@ st.set_page_config(
      page_icon="📊"
 )
 
+# init variables
+selected_table = False
 
 # Establish communication between pygwalker and streamlit
 init_streamlit_comm()
@@ -37,16 +39,20 @@ if selected_ns:
                 tbls = dataVizOprRef.get_tables(selected_schma)
                 tables = tbls.split(",")    
                 selected_table = st.selectbox('Select Table', tables,index=None)
-
-if selected_ns and selected_schma and selected_table:
+                
+if selected_table:
+    print("inside selection")
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
-    @st.cache_resource
-    def get_pyg_renderer() -> "StreamlitRenderer":        
+    #@st.cache_resource                    
+    def get_pyg_renderer() -> "StreamlitRenderer": 
+        print("inside renderer")       
         docCount = dataVizOprRef.get_df(selected_schma + '.' + selected_table,500)  
         # When you need to publish your app to the public, you should set the debug parameter to False to prevent other users from writing to your chart configuration file.
         return StreamlitRenderer(docCount, spec="gw_config.json",spec_io_mode="simple")
     
+    print(selected_schma)
     if dataVizOprRef.get_row_count(selected_schma + '.' + selected_table) > 0:
+        print("inside dataViz")
         renderer = get_pyg_renderer()
         renderer.explorer()
     else:
