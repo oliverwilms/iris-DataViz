@@ -7,6 +7,21 @@ Exploratory Data Analysis with Visualization Application. Turn your IRIS table i
 # Application Interface
 ![](https://github.com/mwaseem75/iris-DataViz/blob/main/appInfo.gif)
 
+# Features
+* Drag-and-Drop Visualization
+* Manipulate and clean your data within the visualization
+* Wide Range of Chart Types:
+* Interactive Data Exploration
+* Interactive Aggregation and Grouping:
+* Exportable Visualizations
+* Automatic Data Summarization
+* Calculated / Computed Fields
+* Support for Categorical, Numerical, and Temporal Data
+* Interactive Legends and Filters
+* Interactive Report Generation
+* Geospatial Data Support
+
+
 # Installation
 1. Clone/git pull the repo into any local directory
 
