@@ -46,4 +46,4 @@ To run the application Navigate to [**http://localhost:8051**](http://localhost:
 ![image](https://github.com/user-attachments/assets/fb2c5b30-52ab-4ee5-afbc-2b236c01e261)
 
 ## Management Portal
-Navigate to the Management Portal SQL [(http://localhost:53795/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER)](http://localhost:53795/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER) to view Data [SuperUser | SYS]
+Navigate to the Management Portal SQL [(http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER)](http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER) to view Data [SuperUser | SYS]
