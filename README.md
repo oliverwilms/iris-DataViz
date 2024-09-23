@@ -51,7 +51,5 @@ To run the application Navigate to [**http://localhost:8051**](http://localhost:
 Select Namespace,Schema and table. Click on Data tab to view the data
 ![image](https://github.com/user-attachments/assets/5aa606ef-a1ea-43bb-a7d9-419b6992902c)
 
-
-
-
+Drag desired columns in X-Axis and Y-Axis, and select the desired graph type.
 ![image](https://github.com/user-attachments/assets/fb2c5b30-52ab-4ee5-afbc-2b236c01e261)
