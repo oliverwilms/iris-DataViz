@@ -13,8 +13,7 @@ class DataVizOpr:
             with conn.begin():# Load 
                 sql = f"""
                     SELECT top {top_n} * from {tbl}
-                """
-                print(sql)
+                """       
                 result = conn.execute(text(sql))
                 result_df = pd.DataFrame(result)
                 if len(result_df) == 0:
