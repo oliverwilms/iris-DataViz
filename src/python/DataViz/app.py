@@ -89,7 +89,7 @@ elif selected_src == "From CSV" and selected_csv:#from CSV
     @st.cache_resource 
     def get_pyg_renderer() -> "StreamlitRenderer":                         
         # When you need to publish your app to the public, you should set the debug parameter to False to prevent other users from writing to your chart configuration file.
-        return StreamlitRenderer(df, spec="gw_config.json",spec_io_mode="simple")
+        return StreamlitRenderer(df)
     
     @st.cache_resource 
     def get_pyg_renderer2() -> "StreamlitRenderer":                         
