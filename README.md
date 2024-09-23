@@ -42,9 +42,16 @@ docker-compose build
 docker-compose up -d 
 ```
 
+## Management Portal
+Application already imported car-related data. In order to view the data navigate to the Management Portal SQL [(http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER)](http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER) to view Data [SuperUser | SYS]
+<img width="960" alt="image" src="https://github.com/user-attachments/assets/754986ea-4500-4881-96a7-1c0c6b4f5058">
+
 ## Run Streamlit Web Application
 To run the application Navigate to [**http://localhost:8051**](http://localhost:8051) 
-![image](https://github.com/user-attachments/assets/fb2c5b30-52ab-4ee5-afbc-2b236c01e261)
+Select Namespace,Schema and table. Click on Data tab to view the data
+![image](https://github.com/user-attachments/assets/5aa606ef-a1ea-43bb-a7d9-419b6992902c)
 
-## Management Portal
-Navigate to the Management Portal SQL [(http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER)](http://localhost:52773/csp/sys/exp/%25CSP.UI.Portal.SQL.Home.zen?$NAMESPACE=USER) to view Data [SuperUser | SYS]
+
+
+
+![image](https://github.com/user-attachments/assets/fb2c5b30-52ab-4ee5-afbc-2b236c01e261)
