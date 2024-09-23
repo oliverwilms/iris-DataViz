@@ -1,6 +1,7 @@
 
 # Summary
-Exploratory Data Analysis with Visualization Application. Turn your IRIS table into an interactive UI for visual analysis.
+
+**iris-DataViz** is an Exploratory Data Analysis and Visualization Streamlit Application that leverages the functionality of [**IRIS embedded python**](https://docs.intersystems.com/irisforhealthlatest/csp/docbook/DocBook.UI.Page.cls?KEY=AFL_epython) and SQLAlchemy to interact with IRIS, as well as the [**PyGWalker**](https://kanaries.net/pygwalker) python library for data analysis and data Visualization. PyGWalker (Python Graphic Walker) is an interactive data visualization library built for Python, aiming to bring the ease and functionality of **Tableau-style** drag-and-drop visualization into Python environments.
 
 [![one](https://img.shields.io/badge/Platform-InterSystems%20IRIS-blue)](https://www.intersystems.com/data-platform/) [![one](https://img.shields.io/badge/WebFrameWork-Streamlit-Orange)](https://streamlit.io/) [![one](https://img.shields.io/badge/VectorStore-IRIS-blue)](https://www.intersystems.com/data-platform/) [![one](https://img.shields.io/badge/ORM-SQLAlchemy-teal)](https://www.sqlalchemy.org/)  [![one](https://img.shields.io/badge/PythonLib-pygwalker-yellow)](https://docs.kanaries.net/pygwalker) [![OEX](https://img.shields.io/badge/Available%20on-Intersystems%20Open%20Exchange-00b2a9.svg)](https://github.com/mwaseem75/iris-RAG-Gen/blob/main/LICENSE) [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/mwaseem75/iris-RAG-Gen/blob/main/LICENSE)
 
