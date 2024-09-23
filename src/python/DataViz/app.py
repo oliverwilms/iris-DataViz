@@ -8,11 +8,29 @@ import iris
 
 # Adjust the width of the Streamlit page
 st.set_page_config(
-    page_title="iris VisEDA",
+    page_title="IRIS-DataViz",
     layout="wide",
      page_icon="📊"
 )
-
+# Disable the deploy button
+st.write(
+    """
+    <style>
+    header {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown("""
+        <style>
+               .block-container {
+                    padding-top: 0rem;
+                    padding-bottom: 0rem;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+                }
+        </style>
+        """, unsafe_allow_html=True)
 
 # init variables
 selected_table = False
@@ -24,7 +42,7 @@ init_streamlit_comm()
 # Add a title
 st.title("📊IRIS-DataViz")
 # Create 3 columns in the layout
-col1, col2, col3,col4 = st.columns(4)
+col1, col2, col3,col4 = st.columns([1, 1,2,2])
 
 with col1:
     selected_src = st.selectbox('Select Data Source',["From IRIS","From CSV"],index=0)
@@ -40,10 +58,15 @@ with col1:
                 schmas = schms.split(",")    
                 selected_schma = st.selectbox('Select Schema', schmas,index=None)
                 if selected_schma:
-                    with col4:        
+                    with col4: 
+
                         tbls = dataVizOprRef.get_tables(selected_schma)
                         tables = tbls.split(",")    
-                        selected_table = st.selectbox('Select Table', tables,index=None)
+                        coltbl, colrows = st.columns([2,1])
+                        with coltbl:
+                            selected_table = st.selectbox('Select Table', tables,index=None)
+                        with colrows:
+                            selected_rows = st.selectbox('Max Rows',['100','500','ALL'],index=0)
     else:#From CSV
         with col2:                        
             selected_csv = st.selectbox('Select CSV file', ["Bike Sharing","Cars Info"],index=None)
@@ -53,7 +76,7 @@ if selected_src == "From IRIS" and selected_table:
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
     #@st.cache_resource                    
     def get_pyg_renderer() -> "StreamlitRenderer":                 
-        docCount = dataVizOprRef.get_df(selected_schma + '.' + selected_table,500)  
+        docCount = dataVizOprRef.get_df(selected_schma + '.' + selected_table,selected_rows)  
         # When you need to publish your app to the public, you should set the debug parameter to False to prevent other users from writing to your chart configuration file.
         return StreamlitRenderer(docCount, spec="gw_config.json",spec_io_mode="simple")
                 

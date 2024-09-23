@@ -11,9 +11,14 @@ class DataVizOpr:
         #tbl = "VisEDA.BikeSharing"      
         with self.engine.connect() as conn:
             with conn.begin():# Load 
-                sql = f"""
-                    SELECT top {top_n} * from {tbl}
-                """       
+                if top_n == "ALL":
+                    sql = f"""
+                        SELECT  * from {tbl}
+                    """
+                else:
+                    sql = f"""
+                        SELECT top {top_n} * from {tbl}
+                    """           
                 result = conn.execute(text(sql))
                 result_df = pd.DataFrame(result)
                 if len(result_df) == 0:
