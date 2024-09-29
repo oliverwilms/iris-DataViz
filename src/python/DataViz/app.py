@@ -51,14 +51,24 @@ with col1:
     # selected_schma = st.selectbox('Select Schema', schmas,index=None)
     # selected_table = st.selectbox('Select Table', tables,index=None)
     input_col1 = st.text_input("Category :", "")
+    p1 = ""
     if input_col1:
-        where = where + "Category LIKE '" + input_col1 + "%'"
+        p1 = input_col1
 with col2:    
     input_col2 = st.text_input("Merchant :", "")
+    p2 = ""
+    if input_col2:
+        p2 = input_col2
 with col3:
     input_col3 = st.text_input("From Date:", "")
+    p3 = ""
+    if input_col3:
+        p3 = input_col3
 with col4:
     input_col4 = st.text_input("To Date  :", "")
+    p4 = ""
+    if input_col4:
+        p4 = input_col4
 #    if selected_src == "From IRIS":
 #        with col2:   
 #            ns = iris.cls('dc.DataViz.Util').getNameSpaces()
@@ -88,7 +98,7 @@ selected_src = "From IRIS"
 selected_ns = "USER"
 selected_schma = "DC_IRIS"
 selected_table = "transact"
-
+where = where + "Category LIKE '" + p1 + "%' AND Merchant LIKE '" + p2 + "%' AND TranDate >= '" + p3 + "' AND TranDate <= '" + p4 + "'"
 if selected_src == "From IRIS" and selected_table:
     dataVizOprRef = DataVizOpr(namespace=selected_ns)
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
