@@ -49,13 +49,13 @@ with col1:
     # selected_ns = st.selectbox('Select Namespace', namespaces,index=None)
     # selected_schma = st.selectbox('Select Schema', schmas,index=None)
     # selected_table = st.selectbox('Select Table', tables,index=None)
-    input_col1 = st.text_input("Category :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+    input_col1 = st.text_input("Category :", "")
 with col2:    
-    input_col2 = st.text_input("Merchant :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+    input_col2 = st.text_input("Merchant :", "")
 with col3:
-    input_col3 = st.text_input("From Date:", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+    input_col3 = st.text_input("From Date:", "")
 with col4:
-    input_col4 = st.text_input("To Date  :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+    input_col4 = st.text_input("To Date  :", "")
 #    if selected_src == "From IRIS":
 #        with col2:   
 #            ns = iris.cls('dc.DataViz.Util').getNameSpaces()
