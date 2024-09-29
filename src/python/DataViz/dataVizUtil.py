@@ -7,17 +7,17 @@ class DataVizOpr:
         self.engine = create_engine(self.CONNECTION_STRING)
         #self.conn = engine.connect()
         
-    def get_df(self,tbl,top_n):  
+    def get_df(self,tbl,where):  
         #tbl = "VisEDA.BikeSharing"      
         with self.engine.connect() as conn:
             with conn.begin():# Load 
-                if top_n == "ALL":
+                if len(where) == 0:
                     sql = f"""
                         SELECT  * from {tbl}
                     """
                 else:
                     sql = f"""
-                        SELECT top {top_n} * from {tbl}
+                        SELECT * from {tbl} where {where}
                     """           
                 result = conn.execute(text(sql))
                 result_df = pd.DataFrame(result)
