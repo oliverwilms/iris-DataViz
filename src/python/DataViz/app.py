@@ -86,7 +86,8 @@ selected_ns = "USER"
 selected_schema = "DC_IRIS"
 selected_table = "transact"
 where = ""
-if selected_src == "From IRIS" and selected_table:           
+if selected_src == "From IRIS" and selected_table:
+    dataVizOprRef = DataVizOpr(namespace=selected_ns)
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
     #@st.cache_resource                    
     def get_pyg_renderer() -> "StreamlitRenderer":
