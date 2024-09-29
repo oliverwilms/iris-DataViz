@@ -35,6 +35,7 @@ st.markdown("""
 # init variables
 selected_table = False
 selected_csv = ""
+where = ""
 
 # Establish communication between pygwalker and streamlit
 init_streamlit_comm()
@@ -50,6 +51,8 @@ with col1:
     # selected_schma = st.selectbox('Select Schema', schmas,index=None)
     # selected_table = st.selectbox('Select Table', tables,index=None)
     input_col1 = st.text_input("Category :", "")
+    if input_col1:
+        where = where + "Category LIKE '" + input_col1 + "%'"
 with col2:    
     input_col2 = st.text_input("Merchant :", "")
 with col3:
@@ -85,7 +88,7 @@ selected_src = "From IRIS"
 selected_ns = "USER"
 selected_schma = "DC_IRIS"
 selected_table = "transact"
-where = ""
+
 if selected_src == "From IRIS" and selected_table:
     dataVizOprRef = DataVizOpr(namespace=selected_ns)
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
