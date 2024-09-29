@@ -83,7 +83,7 @@ with col4:
          
 selected_src = "From IRIS"
 selected_ns = "USER"
-selected_schema = "DC_IRIS"
+selected_schma = "DC_IRIS"
 selected_table = "transact"
 where = ""
 if selected_src == "From IRIS" and selected_table:
