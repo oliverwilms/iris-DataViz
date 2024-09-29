@@ -41,42 +41,56 @@ init_streamlit_comm()
  
 # Add a title
 st.title("📊IRIS-DataViz")
-# Create 3 columns in the layout
-col1, col2, col3,col4 = st.columns([1, 1,2,2])
+# Create 4 columns in the layout
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    selected_src = st.selectbox('Select Data Source',["From IRIS","From CSV"],index=0)
-    if selected_src == "From IRIS":
-        with col2:   
-            ns = iris.cls('dc.DataViz.Util').getNameSpaces()
-            namespaces = ns.split(",")
-            selected_ns = st.selectbox('Select Namespace', namespaces,index=None)
-        if selected_ns:    
-            with col3:
-                dataVizOprRef = DataVizOpr(namespace=selected_ns)
-                schms = dataVizOprRef.get_schema()
-                schmas = schms.split(",")    
-                selected_schma = st.selectbox('Select Schema', schmas,index=None)
-                if selected_schma:
-                    with col4: 
+    # selected_src = st.selectbox('Select Data Source',["From IRIS","From CSV"],index=0)
+    # selected_ns = st.selectbox('Select Namespace', namespaces,index=None)
+    # selected_schma = st.selectbox('Select Schema', schmas,index=None)
+    # selected_table = st.selectbox('Select Table', tables,index=None)
+    input_col1 = st.text_input("Category :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+with col2:    
+    input_col2 = st.text_input("Merchant :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+with col3:
+    input_col3 = st.text_input("From Date:", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+with col4:
+    input_col4 = st.text_input("To Date  :", value="", max_chars=None, key=None, type="default", help=None, autocomplete=None, on_change=None, args=None, kwargs=None, *, placeholder=None, disabled=False, label_visibility="visible")
+#    if selected_src == "From IRIS":
+#        with col2:   
+#            ns = iris.cls('dc.DataViz.Util').getNameSpaces()
+#            namespaces = ns.split(",")
+#            selected_ns = st.selectbox('Select Namespace', namespaces,index=None)
+#        if selected_ns:    
+#            with col3:
+#                dataVizOprRef = DataVizOpr(namespace=selected_ns)
+#                schms = dataVizOprRef.get_schema()
+#                schmas = schms.split(",")    
+#                selected_schma = st.selectbox('Select Schema', schmas,index=None)
+#                if selected_schma:
+#                    with col4: 
 
-                        tbls = dataVizOprRef.get_tables(selected_schma)
-                        tables = tbls.split(",")    
-                        coltbl, colrows = st.columns([2,1])
-                        with coltbl:
-                            selected_table = st.selectbox('Select Table', tables,index=None)
-                        with colrows:
-                            selected_rows = st.selectbox('Max Rows',['100','500','ALL'],index=0)
-    else:#From CSV
-        with col2:                        
-            selected_csv = st.selectbox('Select CSV file', ["Bike Sharing","Cars Info"],index=None)
+#                        tbls = dataVizOprRef.get_tables(selected_schma)
+#                        tables = tbls.split(",")    
+#                        coltbl, colrows = st.columns([2,1])
+#                        with coltbl:
+#                            selected_table = st.selectbox('Select Table', tables,index=None)
+#                        with colrows:
+#                            selected_rows = st.selectbox('Max Rows',['100','500','ALL'],index=0)
+#    else:#From CSV
+#        with col2:                        
+#            selected_csv = st.selectbox('Select CSV file', ["Bike Sharing","Cars Info"],index=None)
          
-
+selected_src = "From IRIS"
+selected_ns = "USER"
+selected_schema = "DC_IRIS"
+selected_table = "transact"
+where = ""
 if selected_src == "From IRIS" and selected_table:           
     # Get an instance of pygwalker's renderer. You should cache this instance to effectively prevent the growth of in-process memory.
     #@st.cache_resource                    
-    def get_pyg_renderer() -> "StreamlitRenderer":                 
-        docCount = dataVizOprRef.get_df(selected_schma + '.' + selected_table,selected_rows)  
+    def get_pyg_renderer() -> "StreamlitRenderer":
+        docCount = dataVizOprRef.get_df(selected_schma + '.' + selected_table,where)  
         # When you need to publish your app to the public, you should set the debug parameter to False to prevent other users from writing to your chart configuration file.
         return StreamlitRenderer(docCount, spec="gw_config.json",spec_io_mode="simple")
                 
@@ -102,7 +116,4 @@ elif selected_src == "From CSV" and selected_csv:#from CSV
     else:    
         df = pd.read_csv("/irisdev/app/data/cars.csv")
         renderer = get_pyg_renderer2()
-        renderer.explorer()    
-        
-
-    
+        renderer.explorer()
