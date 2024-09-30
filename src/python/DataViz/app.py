@@ -61,12 +61,12 @@ with col2:
         p2 = input_col2
 with col3:
     input_col3 = st.text_input("From Date:", "")
-    p3 = ""
+    p3 = "1970-01-01"
     if input_col3:
         p3 = input_col3
 with col4:
     input_col4 = st.text_input("To Date  :", "")
-    p4 = ""
+    p4 = "2070-12-31"
     if input_col4:
         p4 = input_col4
 #    if selected_src == "From IRIS":
